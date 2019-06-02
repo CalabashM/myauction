@@ -27,12 +27,12 @@ public interface AuctionService {
     List<AuctionCustomer> selectAuctionendtime();
 
 
+
+
     /**查询正在拍卖的商品*/
     List<Auction> selectAuctionNoendtime();
 
     void addAuction(Auction auction);
+    int delteAuction(Integer auctionid);
 
-    Auction getAuctionByAuctionID(Integer id);
-
-    void updateAucton(Auction auction);
 }

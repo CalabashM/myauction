@@ -3,10 +3,7 @@ package com.shop.service;
 import com.shop.mapper.AuctionCustomerMapper;
 import com.shop.mapper.AuctionMapper;
 import com.shop.mapper.AuctionrecordMapper;
-import com.shop.pojo.Auction;
-import com.shop.pojo.AuctionCustomer;
-import com.shop.pojo.AuctionExample;
-import com.shop.pojo.Auctionrecord;
+import com.shop.pojo.*;
 import com.shop.utils.AuctionPriceException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -173,14 +170,12 @@ public class AuctionServiceImpl implements AuctionService {
         this.auctionMapper.insert(auction);
 
     }
-
     @Override
-    public Auction getAuctionByAuctionID(Integer id) {
-        return this.auctionMapper.selectByPrimaryKey(id);
-    }
-
-    @Override
-    public void updateAucton(Auction auction) {
-        this.auctionMapper.updateByPrimaryKey(auction);
+    public int delteAuction(Integer auctionid){
+        AuctionrecordExample example = new AuctionrecordExample();
+        AuctionrecordExample.Criteria criteria = example.createCriteria();
+        criteria.andAuctionidEqualTo(auctionid);
+        auctionrecordMapper.deleteByExample(example);
+        return this.auctionMapper.deleteByPrimaryKey(auctionid);
     }
 }

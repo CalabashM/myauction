@@ -1,11 +1,11 @@
 package com.shop.utils;
 
+import org.springframework.core.convert.converter.Converter;
+import org.springframework.stereotype.Component;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
-import org.springframework.core.convert.converter.Converter;
-import org.springframework.stereotype.Component;
 
 @Component
 public class DateConverter implements Converter<String, Date> {

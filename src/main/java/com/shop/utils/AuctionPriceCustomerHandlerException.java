@@ -38,12 +38,10 @@ public class AuctionPriceCustomerHandlerException implements HandlerExceptionRes
            ex = (AuctionPriceException) exception;
         }
         else
-
         {
-            System.out.println(exception);
             ex = new AuctionPriceException("未知异常");
         }
-
+        System.out.println(exception);
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("errorMsg",ex.getMessage());
         modelAndView.setViewName("errorPage");

@@ -2,8 +2,9 @@ package com.shop.mapper;
 
 import com.shop.pojo.User;
 import com.shop.pojo.UserExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface UserMapper {
     int countByExample(UserExample example);

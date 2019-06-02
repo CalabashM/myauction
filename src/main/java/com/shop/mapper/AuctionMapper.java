@@ -2,8 +2,9 @@ package com.shop.mapper;
 
 import com.shop.pojo.Auction;
 import com.shop.pojo.AuctionExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface AuctionMapper {
     int countByExample(AuctionExample example);

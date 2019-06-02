@@ -17,6 +17,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Date;
 import java.util.List;
+
 @Controller
 public class AuctionController {
     // 每页记录数
@@ -150,29 +151,15 @@ public class AuctionController {
        return "redirect:/queryAllAuctions";
     }
 
-    @RequestMapping(value = "/toEdit/{auctionid}")
-    public ModelAndView toEdit(@PathVariable Integer auctionid){
-        ModelAndView modelAndView=new ModelAndView();
-        Auction auction=auctionService.getAuctionByAuctionID(auctionid);
-        modelAndView.addObject("auction",auction);
-        modelAndView.setViewName("editAuction");
-        return modelAndView;
-    }
-
-    @RequestMapping("/editAuction")
-    public String editAuction(Auction auction, MultipartFile pic) throws IOException {
-        // 封装 图片的类型
-        auction.setAuctionpictype(pic.getContentType());
-        // 封装图片的名称
-        //auction.setAuctionname(pic.getOriginalFilename());
-        auction.setAuctionpic(pic.getOriginalFilename());
-
-        File file = new File("E:\\pic\\"+pic.getOriginalFilename());
-        // 上传
-        pic.transferTo(file);
-
-        this.auctionService.updateAucton(auction);
-        return "redirect:/queryAllAuctions";
-
+    @ResponseBody
+    @RequestMapping("/deleteAuction")
+    public String delteAuction(Integer auctionid){
+        int row=this.auctionService.delteAuction(auctionid);
+        System.out.println(row);
+        if(row>0){
+            return "OK";
+        }else {
+            return "FALL";
+        }
     }
 }
